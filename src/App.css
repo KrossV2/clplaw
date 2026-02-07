@@ -1,0 +1,36 @@
+@import 'https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap';
+
+body {
+  font-family: 'Public Sans', sans-serif;
+}
+
+.legal-pattern {
+  background-image: radial-gradient(#dc2626 0.5px, transparent 0.5px);
+  background-size: 24px 24px;
+  background-color: #ffffff;
+}
+
+.dark .legal-pattern {
+  background-image: radial-gradient(#dc2626 0.5px, transparent 0.5px);
+  background-color: #0f172a;
+}
+
+/* Animation classes */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+.slide-up {
+  animation: slideUp 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}

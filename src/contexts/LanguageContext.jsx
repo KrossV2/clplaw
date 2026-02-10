@@ -140,29 +140,35 @@ const translations = {
 
 const LanguageContext = createContext();
 
-export const useLanguage = () => useContext(LanguageContext);
+export const useLanguage = () => {
+  const context = useContext(LanguageContext);
+  if (!context) {
+    throw new Error('useLanguage must be used within a LanguageProvider');
+  }
+  return context;
+};
 
 export const LanguageProvider = ({ children }) => {
   const [language, setLanguage] = useState(() => {
     const saved = localStorage.getItem('clplaw_language');
-    return saved || 'en';
+    // Faqat mavjud tillarni tekshirish
+    const validLanguages = ['en', 'ru', 'uz'];
+    return saved && validLanguages.includes(saved) ? saved : 'en';
   });
 
   const t = (key) => {
-    return translations[language][key] || key;
+    // Agar til mavjud bo'lmasa, default ingliz tilidan foydalanish
+    const langData = translations[language] || translations.en;
+    return langData[key] || key;
   };
 
   const changeLanguage = (lang) => {
-    setLanguage(lang);
-    localStorage.setItem('clplaw_language', lang);
-  };
-
-  useEffect(() => {
-    const saved = localStorage.getItem('clplaw_language');
-    if (saved) {
-      setLanguage(saved);
+    // Faqat mavjud tillarni o'zgartirishga ruxsat berish
+    if (translations[lang]) {
+      setLanguage(lang);
+      localStorage.setItem('clplaw_language', lang);
     }
-  }, []);
+  };
 
   return (
     <LanguageContext.Provider value={{ language, t, changeLanguage }}>

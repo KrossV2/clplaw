@@ -1,17 +1,24 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
-import { useAdmin } from '../contexts/AdminContext';
 
 const Home = () => {
   const { t } = useLanguage();
-  const { partners, cases, documents } = useAdmin();
 
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
     transition: { duration: 0.6 }
   };
+
+  // Yangi hamkorlar ro'yxati
+  const partnerLogos = [
+    { id: 1, name: "SINOHYDRO TASHKENT", icon: "bolt" },
+    { id: 2, name: "POWERCHINA HUADONG", icon: "electrical_services" },
+    { id: 3, name: "ACWA POWER BASH WIND", icon: "wind_power" },
+    { id: 4, name: "CHINA ENERGY INTL", icon: "energy_program_saving" },
+    { id: 5, name: "HAYRLIBINO", icon: "business_center" }
+  ];
 
   return (
     <div className="flex-1">
@@ -28,7 +35,7 @@ const Home = () => {
             </div>
             
             <h1 className="text-slate-900 dark:text-white text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight">
-              Pioneering <br/><span className="text-primary">{t('pioneering')}</span>
+              <span className="text-primary">{t('firmTagline')}</span>
             </h1>
             
             <p className="text-slate-600 dark:text-slate-400 text-xl font-medium leading-relaxed max-w-[580px]">
@@ -68,8 +75,8 @@ const Home = () => {
                   <span className="material-symbols-outlined text-primary text-4xl">gavel</span>
                 </div>
                 <div>
-                  <p className="text-3xl font-black text-primary">15+ Years</p>
-                  <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">{t('yearsExperience')}</p>
+                  <p className="text-3xl font-black text-primary">1000+</p>
+                  <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">Successful Cases</p>
                 </div>
               </div>
             </div>
@@ -77,8 +84,26 @@ const Home = () => {
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="px-6 lg:px-40 py-24 bg-background-alt-light dark:bg-background-alt-dark" id="about">
+      {/* About Firm Section */}
+      <section className="px-6 lg:px-40 py-24 bg-white dark:bg-background-dark" id="about">
+        <div className="max-w-[1280px] mx-auto">
+          <motion.div {...fadeInUp} className="flex flex-col items-center text-center mb-16">
+            <div className="h-1.5 w-12 bg-primary mb-6"></div>
+            <h2 className="text-primary text-xs font-black uppercase tracking-[0.3em] mb-3">
+              {t('aboutFirm')}
+            </h2>
+            <h3 className="text-slate-900 dark:text-white text-4xl font-black mb-8">
+              {t('firmTagline')}
+            </h3>
+            <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed max-w-4xl">
+              {t('firmDescription')}
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Attorneys Section */}
+      <section className="px-6 lg:px-40 py-24 bg-background-alt-light dark:bg-background-alt-dark">
         <div className="max-w-[1280px] mx-auto">
           <motion.div 
             {...fadeInUp}
@@ -94,6 +119,7 @@ const Home = () => {
           </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {/* Attorney Umirzoqov Shohrux - Founder */}
             <motion.div 
               whileHover={{ scale: 1.02 }}
               className="group flex flex-col md:flex-row gap-8 p-6 rounded-2xl bg-white dark:bg-slate-800/50 hover:bg-white dark:hover:bg-slate-800 hover:shadow-2xl transition-all border border-transparent hover:border-primary/30"
@@ -102,10 +128,13 @@ const Home = () => {
                    style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuD_nd7pq-w1slWA7pww6_lC4oF_6YvkcwZBa0a5kC_6jEvAP96con29DzHqxz92cKIo8oRjoFwvQu2897c6yxvBWf1PIh0177Wkj7uBzZx7XEoEoodaj6PkG2r6puVz8i4VU747eTJOt9tOnHyx2mmQ8C1Np01fkB_npgYjDtnWw4bEc3PRMCAw38erzznpCCl316bVPYpubzcQuJHujEul2s_vyLCl_ziHbTRDOOulYunXFXj4GTvxVotkti0FtU0DeW2ivp4OBw")' }}>
               </div>
               <div className="flex flex-col justify-center gap-3">
-                <span className="text-primary text-xs font-black tracking-[0.2em] uppercase">{t('managingPartner')}</span>
-                <h4 className="text-2xl font-black text-slate-900 dark:text-white">Alexander V. Sterling</h4>
+                <span className="text-primary text-xs font-black tracking-[0.2em] uppercase">{t('seniorPartner')}</span>
+                <h4 className="text-2xl font-black text-slate-900 dark:text-white">{t('attorney2Name')}</h4>
+                <p className="text-sm font-bold text-slate-500 dark:text-slate-400">
+                  {t('attorney2Title')}
+                </p>
                 <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6">
-                  {t('alexanderBio')}
+                  {t('attorney2Bio')}
                 </p>
                 <div className="flex gap-4">
                   <a className="w-10 h-10 rounded-lg bg-slate-50 dark:bg-slate-900 flex items-center justify-center text-slate-400 hover:text-primary transition-colors" href="#">
@@ -118,6 +147,7 @@ const Home = () => {
               </div>
             </motion.div>
             
+            {/* Attorney Tohirxonov Og'abek - Co-Founder */}
             <motion.div 
               whileHover={{ scale: 1.02 }}
               className="group flex flex-col md:flex-row gap-8 p-6 rounded-2xl bg-white dark:bg-slate-800/50 hover:bg-white dark:hover:bg-slate-800 hover:shadow-2xl transition-all border border-transparent hover:border-primary/30"
@@ -126,10 +156,13 @@ const Home = () => {
                    style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuDxXPj0ZLaFQw9XG9N6nU9ZKYjHpgajLAzv5Jsf5PdUems1QRf0QO6wZKhEe-IA6cNGDE8qVuI2G4FrcKiZwObeSjfWgUAZaoJdnwt4KaawOlYvdKlqvVa-uc_dSdoTM1XAY-6N40AtQBhGJ_2hOPHOqNU7oTH0ZICyQHsxolJ5JzPZtZYGyHtFBOZ4ahhudaKwBs2I9d19R6ronPbHDGyCHaTPDpvN3okMAAj3JmZcNy2jvNOqak1e1ax0nnLyMmX_JreIWlcuXg")' }}>
               </div>
               <div className="flex flex-col justify-center gap-3">
-                <span className="text-primary text-xs font-black tracking-[0.2em] uppercase">{t('seniorPartner')}</span>
-                <h4 className="text-2xl font-black text-slate-900 dark:text-white">Elena M. Rostova</h4>
+                <span className="text-primary text-xs font-black tracking-[0.2em] uppercase">{t('managingPartner')}</span>
+                <h4 className="text-2xl font-black text-slate-900 dark:text-white">{t('attorney1Name')}</h4>
+                <p className="text-sm font-bold text-slate-500 dark:text-slate-400">
+                  {t('attorney1Title')}
+                </p>
                 <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6">
-                  {t('elenaBio')}
+                  {t('attorney1Bio')}
                 </p>
                 <div className="flex gap-4">
                   <a className="w-10 h-10 rounded-lg bg-slate-50 dark:bg-slate-900 flex items-center justify-center text-slate-400 hover:text-primary transition-colors" href="#">
@@ -145,7 +178,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Partners Section */}
+      {/* Partners Section - Yangilangan hamkorlar */}
       <section className="border-y border-slate-100 dark:border-slate-800 bg-white dark:bg-background-dark py-16">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-40">
           <motion.p 
@@ -155,17 +188,17 @@ const Home = () => {
             {t('trustedBy')}
           </motion.p>
           <div className="flex flex-wrap justify-center items-center gap-12 lg:gap-24 opacity-60 dark:opacity-40 grayscale hover:grayscale-0 transition-all">
-            {partners.map((partner, index) => (
+            {partnerLogos.map((partner, index) => (
               <motion.div 
                 key={partner.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ scale: 1.1 }}
-                className="flex items-center gap-3 font-black text-xl text-slate-600 dark:text-slate-300 cursor-pointer"
+                className="flex flex-col items-center gap-2 font-black text-lg text-slate-600 dark:text-slate-300 cursor-pointer"
               >
-                <span className="material-symbols-outlined text-primary">{partner.icon}</span>
-                {partner.name}
+                <span className="material-symbols-outlined text-primary text-3xl">{partner.icon}</span>
+                <span className="text-sm font-bold">{partner.name}</span>
               </motion.div>
             ))}
           </div>
@@ -200,29 +233,71 @@ const Home = () => {
           </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {cases.map((caseItem, index) => (
-              <motion.div 
-                key={caseItem.id}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.2 }}
-                whileHover={{ y: -10 }}
-                className="bg-white dark:bg-slate-800 p-10 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-2xl transition-all group"
-              >
-                <span className="material-symbols-outlined text-primary mb-6 text-4xl group-hover:scale-110 transition-transform block">
-                  {caseItem.icon}
-                </span>
-                <h4 className="text-xl font-black mb-4 text-slate-900 dark:text-white">
-                  {t(caseItem.title)}
-                </h4>
-                <p className="text-sm text-slate-500 dark:text-slate-400 mb-8 leading-relaxed">
-                  {t(caseItem.description)}
-                </p>
-                <span className="text-[10px] font-black text-primary px-3 py-1.5 bg-primary/10 rounded-full border border-primary/20 tracking-wider">
-                  {caseItem.category}
-                </span>
-              </motion.div>
-            ))}
+            {/* Tax Disputes */}
+            <motion.div 
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              whileHover={{ y: -10 }}
+              className="bg-white dark:bg-slate-800 p-10 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-2xl transition-all group"
+            >
+              <span className="material-symbols-outlined text-primary mb-6 text-4xl group-hover:scale-110 transition-transform block">
+                receipt_long
+              </span>
+              <h4 className="text-xl font-black mb-4 text-slate-900 dark:text-white">
+                {t('corporateMergerTitle')}
+              </h4>
+              <p className="text-sm text-slate-500 dark:text-slate-400 mb-8 leading-relaxed">
+                {t('corporateMergerDesc')}
+              </p>
+              <span className="text-[10px] font-black text-primary px-3 py-1.5 bg-primary/10 rounded-full border border-primary/20 tracking-wider">
+                Tax Law
+              </span>
+            </motion.div>
+            
+            {/* Debt Recovery */}
+            <motion.div 
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              whileHover={{ y: -10 }}
+              className="bg-white dark:bg-slate-800 p-10 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-2xl transition-all group"
+            >
+              <span className="material-symbols-outlined text-primary mb-6 text-4xl group-hover:scale-110 transition-transform block">
+                account_balance
+              </span>
+              <h4 className="text-xl font-black mb-4 text-slate-900 dark:text-white">
+                {t('commercialLitigationTitle')}
+              </h4>
+              <p className="text-sm text-slate-500 dark:text-slate-400 mb-8 leading-relaxed">
+                {t('commercialLitigationDesc')}
+              </p>
+              <span className="text-[10px] font-black text-primary px-3 py-1.5 bg-primary/10 rounded-full border border-primary/20 tracking-wider">
+                Civil Law
+              </span>
+            </motion.div>
+            
+            {/* Labor Disputes */}
+            <motion.div 
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              whileHover={{ y: -10 }}
+              className="bg-white dark:bg-slate-800 p-10 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-2xl transition-all group"
+            >
+              <span className="material-symbols-outlined text-primary mb-6 text-4xl group-hover:scale-110 transition-transform block">
+                work
+              </span>
+              <h4 className="text-xl font-black mb-4 text-slate-900 dark:text-white">
+                {t('regulatoryAdvisoryTitle')}
+              </h4>
+              <p className="text-sm text-slate-500 dark:text-slate-400 mb-8 leading-relaxed">
+                {t('regulatoryAdvisoryDesc')}
+              </p>
+              <span className="text-[10px] font-black text-primary px-3 py-1.5 bg-primary/10 rounded-full border border-primary/20 tracking-wider">
+                Labor Law
+              </span>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -238,26 +313,43 @@ const Home = () => {
               {t('sampleDocuments')}
             </h3>
             <div className="space-y-5">
-              {documents.map((doc) => (
-                <motion.div 
-                  key={doc.id}
-                  whileHover={{ scale: 1.02, x: 10 }}
-                  className="flex items-center justify-between p-6 border-2 border-slate-50 dark:border-slate-800 rounded-xl hover:border-primary/30 dark:hover:border-primary/30 cursor-pointer transition-all group bg-slate-50/30 dark:bg-slate-800/20"
-                >
-                  <div className="flex items-center gap-5">
-                    <span className="material-symbols-outlined text-primary text-2xl">{doc.icon}</span>
-                    <div>
-                      <p className="font-black text-sm text-slate-900 dark:text-white group-hover:text-primary transition-colors">
-                        {t(doc.name)}
-                      </p>
-                      <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">
-                        {doc.type} • {doc.size}
-                      </p>
-                    </div>
+              {/* Legal Consultation Agreement */}
+              <motion.div 
+                whileHover={{ scale: 1.02, x: 10 }}
+                className="flex items-center justify-between p-6 border-2 border-slate-50 dark:border-slate-800 rounded-xl hover:border-primary/30 dark:hover:border-primary/30 cursor-pointer transition-all group bg-slate-50/30 dark:bg-slate-800/20"
+              >
+                <div className="flex items-center gap-5">
+                  <span className="material-symbols-outlined text-primary text-2xl">description</span>
+                  <div>
+                    <p className="font-black text-sm text-slate-900 dark:text-white group-hover:text-primary transition-colors">
+                      {t('ndaTemplate')}
+                    </p>
+                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">
+                      PDF • 245 KB
+                    </p>
                   </div>
-                  <span className="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">download</span>
-                </motion.div>
-              ))}
+                </div>
+                <span className="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">download</span>
+              </motion.div>
+              
+              {/* Power of Attorney */}
+              <motion.div 
+                whileHover={{ scale: 1.02, x: 10 }}
+                className="flex items-center justify-between p-6 border-2 border-slate-50 dark:border-slate-800 rounded-xl hover:border-primary/30 dark:hover:border-primary/30 cursor-pointer transition-all group bg-slate-50/30 dark:bg-slate-800/20"
+              >
+                <div className="flex items-center gap-5">
+                  <span className="material-symbols-outlined text-primary text-2xl">assignment</span>
+                  <div>
+                    <p className="font-black text-sm text-slate-900 dark:text-white group-hover:text-primary transition-colors">
+                      {t('serviceAgreement')}
+                    </p>
+                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">
+                      DOCX • 180 KB
+                    </p>
+                  </div>
+                </div>
+                <span className="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">download</span>
+              </motion.div>
             </div>
           </motion.div>
           
@@ -277,7 +369,7 @@ const Home = () => {
             <motion.a 
               whileHover={{ scale: 1.02 }}
               className="inline-flex items-center justify-center gap-4 w-full bg-white text-primary hover:bg-slate-50 py-5 rounded-xl font-black text-lg transition-all shadow-xl relative z-10" 
-              href="https://t.me/clplaw"
+              href="https://t.me/capstonelegal"
             >
               <svg className="size-6 fill-current" viewBox="0 0 24 24">
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.25-5.54 3.69-.52.35-1 .53-1.42.52-.47-.01-1.37-.26-2.03-.48-.82-.27-1.47-.42-1.42-.88.03-.24.35-.49.96-.75 3.78-1.65 6.31-2.74 7.58-3.27 3.61-1.51 4.35-1.77 4.84-1.78.11 0 .35.03.5.16.13.1.17.24.18.33-.01.06.01.21 0 .26z"></path>

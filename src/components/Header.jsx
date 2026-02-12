@@ -60,7 +60,10 @@ const Header = () => {
               <path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z"></path>
             </svg>
           </div>
-          <h2 className="text-slate-900 dark:text-white text-2xl font-black leading-tight tracking-tighter uppercase">CLPLaw</h2>
+          <div className="flex flex-col">
+            <h2 className="text-slate-900 dark:text-white text-xl lg:text-2xl font-black leading-tight tracking-tighter uppercase">CAPSTONE</h2>
+            <span className="text-[8px] lg:text-[10px] font-bold text-primary tracking-wider">AND LEGAL PARTNERS</span>
+          </div>
         </motion.div>
 
         {/* Mobile menu button */}
@@ -118,7 +121,8 @@ const Header = () => {
           >
             <option value="en">EN</option>
             <option value="ru">RU</option>
-            <option value="uz">UZ</option>
+            <option value="uz">UZ (Lotin)</option>
+            <option value="uz_cyrl">UZ (Kiril)</option>
           </motion.select>
           
           <motion.button 
@@ -130,16 +134,6 @@ const Header = () => {
             <span className="material-symbols-outlined block dark:hidden">dark_mode</span>
             <span className="material-symbols-outlined hidden dark:block">light_mode</span>
           </motion.button>
-          
-          <Link to="/admin">
-            <motion.button 
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="text-xs font-bold text-slate-500 hover:text-primary px-3 py-1 border border-slate-300 rounded"
-            >
-              Admin
-            </motion.button>
-          </Link>
           
           <motion.button 
             whileHover={{ scale: 1.05, backgroundColor: "#b91c1c" }}
@@ -192,7 +186,8 @@ const Header = () => {
             >
               <option value="en">EN</option>
               <option value="ru">RU</option>
-              <option value="uz">UZ</option>
+              <option value="uz">UZ (Lotin)</option>
+              <option value="uz_cyrl">UZ (Kiril)</option>
             </select>
             
             <button 
@@ -205,11 +200,6 @@ const Header = () => {
           </div>
           
           <div className="flex gap-2 p-2">
-            <Link to="/admin" className="flex-1">
-              <button className="w-full text-xs font-bold text-slate-500 hover:text-primary px-3 py-2 border border-slate-300 rounded">
-                Admin
-              </button>
-            </Link>
             <button className="flex-1 bg-primary hover:bg-primary-hover text-white px-3 py-2 rounded font-bold text-sm">
               {t('consultation')}
             </button>

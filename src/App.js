@@ -5,7 +5,6 @@ import { LanguageProvider } from './contexts/LanguageContext';
 import { AdminProvider } from './contexts/AdminContext';
 import Header from './components/Header';
 import Home from './pages/Home';
-import AdminPanel from './pages/AdminPanel';
 import Footer from './components/Footer';
 import './App.css';
 
@@ -15,12 +14,13 @@ function App() {
       <ThemeProvider>
         <LanguageProvider>
           <AdminProvider>
-            <div className="App">
+            <div className="App min-h-screen flex flex-col bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased">
               <Header />
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/admin" element={<AdminPanel />} />
-              </Routes>
+              <main className="flex-grow">
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                </Routes>
+              </main>
               <Footer />
             </div>
           </AdminProvider>
